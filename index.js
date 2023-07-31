@@ -5,8 +5,8 @@ let postRoute = require("./post/posts");
 let bodyParser = require("body-parser");
 app.use(bodyParser.json());
 app.use('/post',postRoute)
-
-mongoose.connect("mongodb+srv://sathishcharyssc:wnVp7CxJRXMHmQ3g@cluster0.oavc5fw.mongodb.net/?retryWrites=true&w=majority")
+require('dotenv').config()
+mongoose.connect(process.env.mongo)
 .then(()=>{
     console.log("mongodb connected successfully");
 })

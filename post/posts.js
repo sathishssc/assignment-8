@@ -5,6 +5,8 @@ let auth = require("../midleware/auth");
 let bodyParser = require("body-parser");
 routed.use(bodyParser.json());
 let jwt = require("jsonwebtoken");
+
+require('dotenv').config()
 //for get all posts
 routed.get("/getPost",auth,(req,res)=>{
    let postId = req.query.id;
@@ -158,7 +160,7 @@ routed.post("/login",(req,res)=>{
                      name:user.name,
                      id:user._id,
                   },
-                  "sathish",
+                  process.env.token,
                   {
                       expiresIn:"1h",
                   }
